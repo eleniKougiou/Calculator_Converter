@@ -13,15 +13,27 @@ public class StartActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
-        configure_startButton();
+        configure_buttonCalculator();
+        configure_buttonConvertor();
     }
 
-    public void configure_startButton(){
-        Button startButton = (Button) findViewById(R.id.startButton);
-        startButton.setOnClickListener(new View.OnClickListener() {
+    public void configure_buttonCalculator(){
+        Button buttonCalculator = (Button) findViewById(R.id.buttonCalculator);
+        buttonCalculator.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(StartActivity.this, MainActivity.class);
+                startActivity(i);
+            }
+        });
+    }
+
+    public void configure_buttonConvertor(){
+        Button buttonConvertor = (Button) findViewById(R.id.buttonConvertor);
+        buttonConvertor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(StartActivity.this, ConvertActivity.class);
                 startActivity(i);
             }
         });
