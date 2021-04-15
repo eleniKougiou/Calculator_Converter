@@ -14,7 +14,7 @@
         android:layout_marginTop="100dp"
         android:backgroundTint="#F2911F1F"
         android:gravity="center_horizontal"
-        android:hint="Wanted amount"
+        android:hint="Amount"
         android:inputType="numberDecimal"
         android:textAlignment="center"
         app:layout_constraintHorizontal_bias="0.497"
@@ -104,11 +104,11 @@
         app:srcCompat="@android:drawable/stat_notify_sync_noanim" />
 
     <TextView
-        android:id="@+id/Convertor"
+        android:id="@+id/Converter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="Convertor"
+        android:text="Converter"
         android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -123,7 +123,7 @@
         android:background="#911F1F"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Convertor"
+        app:layout_constraintTop_toBottomOf="@+id/Converter"
         tools:ignore="MissingConstraints" />
 
 
