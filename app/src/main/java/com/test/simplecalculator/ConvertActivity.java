@@ -25,6 +25,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 
+import java.text.DecimalFormat;
 import java.util.Arrays;
 
 
@@ -158,7 +159,8 @@ public class ConvertActivity extends AppCompatActivity implements AdapterView.On
                                     }else {
                                         final_result = a * final_toRate * amount;
                                     }
-                                    //NumberFormat formatter = new DecimalFormat("#0.00000");
+                                    // Round to 3 decimal
+                                    final_result = (double)Math.round(final_result * 1000d) / 1000d;
                                     String strResult = amount + " " + textFrom + " = <b>" + final_result + "</b> " + textTo;
                                     textResult.setText(Html.fromHtml(strResult));
                                 }

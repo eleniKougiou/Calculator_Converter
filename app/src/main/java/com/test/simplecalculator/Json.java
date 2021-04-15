@@ -1,28 +1,13 @@
 package com.test.simplecalculator;
 
-import androidx.annotation.NonNull;
-
-//import com.google.gson.annotations.Expose;
-//import com.google.gson.annotations.SerializedName;
-
 import java.util.HashMap;
 
 public class Json {
 
-    //@SerializedName("success")
-    //@Expose
     private boolean success;
-    //@SerializedName("timestamp")
-    //@Expose
     private int timestamp;
-    //@SerializedName("base")
-    //@Expose
     private String base;
-    //@SerializedName("date")
-    //@Expose
     private String date;
-    //@SerializedName("rates")
-    //@Expose
     public HashMap<String, Double> rates;
 
     public Json(boolean success, int timestamp, String base, String date, HashMap<String, Double> rates) {

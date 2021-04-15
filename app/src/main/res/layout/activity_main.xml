@@ -4,7 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#2DB0B4BC">
 
     <Button
         android:id="@+id/button0"
@@ -12,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="50dp"
         android:text="0"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -100,6 +101,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="+"
+        android:backgroundTint="#F2911F1F"
         app:layout_constraintBottom_toTopOf="@+id/button0"
         app:layout_constraintStart_toEndOf="@+id/button3" />
 
@@ -108,6 +110,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="-"
+        android:backgroundTint="#F2911F1F"
         app:layout_constraintBottom_toTopOf="@+id/buttonAdd"
         app:layout_constraintStart_toEndOf="@+id/button6" />
 
@@ -116,6 +119,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="x"
+        android:backgroundTint="#F2911F1F"
         app:layout_constraintBottom_toTopOf="@+id/buttonSub"
         app:layout_constraintStart_toEndOf="@+id/button9" />
 
@@ -124,6 +128,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="÷"
+        android:backgroundTint="#F2911F1F"
         app:layout_constraintBottom_toTopOf="@+id/buttonMul"
         app:layout_constraintStart_toEndOf="@+id/buttonPerc" />
 
@@ -134,6 +139,8 @@
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
         android:text="C"
+        android:backgroundTint="#3B424242"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/button7"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -142,6 +149,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="+/-"
+        android:backgroundTint="#3B424242"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/button8"
         app:layout_constraintStart_toEndOf="@+id/buttonClear" />
 
@@ -150,6 +159,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="%"
+        android:backgroundTint="#3B424242"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/button9"
         app:layout_constraintStart_toEndOf="@+id/buttonPlusMinus" />
 
@@ -165,7 +176,8 @@
         android:id="@+id/buttonEq"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="50dp"
+        android:backgroundTint="#911F1F"
         android:text="="
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/buttonDel" />
@@ -174,7 +186,9 @@
         android:id="@+id/numExpr"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="50dp"
+        android:textSize="18sp"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/buttonPlusMinus"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -183,20 +197,31 @@
         android:id="@+id/buttonDel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="50dp"
         android:text="delete"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/buttonComma" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/Calculator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
         android:layout_marginTop="32dp"
         android:text="Calculator"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="16dp"
+        android:background="#911F1F"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Calculator"
+        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
