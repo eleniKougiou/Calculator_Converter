@@ -3,9 +3,6 @@
     package="com.test.simplecalculator">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -15,6 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SimpleCalculator">
         <activity android:name=".MainActivity"/>
+        <activity android:name=".ConvertActivity"/>
         <activity android:name=".StartActivity">
         <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
