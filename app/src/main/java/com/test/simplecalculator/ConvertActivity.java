@@ -1,11 +1,11 @@
 package com.test.simplecalculator;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -36,6 +36,7 @@ public class ConvertActivity extends AppCompatActivity implements AdapterView.On
     TextView textResult;
     ImageView imageView;
     String textTo, textFrom;
+    int idxFrom, idxTo;
     double amount;
     double final_toRate;
     double final_result;
@@ -54,14 +55,15 @@ public class ConvertActivity extends AppCompatActivity implements AdapterView.On
 
         imageView = findViewById(R.id.image);
 
-        txt_amount = findViewById(R.id.amount_field);
-        spinnerTo = findViewById(R.id.to_spinner);
-        spinnerFrom = findViewById(R.id.from_spinner);
-        convertBtn = findViewById(R.id.convBtn);
-        textResult = findViewById(R.id.restxt2);
+        txt_amount = findViewById(R.id.amountValue);
+        spinnerTo = findViewById(R.id.toValue);
+        spinnerFrom = findViewById(R.id.fromValue);
+        convertBtn = findViewById(R.id.buttonConvert);
+        textResult = findViewById(R.id.conversionResult);
         mQueue = Volley.newRequestQueue(this);
         textTo = textFrom = "";
-        currencies[0] = "EUR";
+        currencies[0] = "";
+        configure_buttonChange();
         //currencies = new String[]{"EUR", "EUR"};
         StringRequest stringRequest = new StringRequest(Request.Method.GET, VOLLEY_URL,
                 new Response.Listener<String>() {
@@ -70,7 +72,7 @@ public class ConvertActivity extends AppCompatActivity implements AdapterView.On
                     public void onResponse(String response) {
                         Json json = new Gson().fromJson(response, Json.class);
                         Log.i("RESPONSE", response);
-                        int i = 0;
+                        int i = 1;
                         for (String cur: json.rates.keySet()){
                             if (i < 100){
                                 currencies[i] = cur;
@@ -133,13 +135,13 @@ public class ConvertActivity extends AppCompatActivity implements AdapterView.On
             public void onClick(View v) {
 
                 if (txt_amount.getText().toString().isEmpty()) {
-                    createAlertDialog("Amount can't be empty", "Please enter Amount");
+                    AlertMessage("Enter the amount you would like to convert");
                     //} else if (spinnerFrom.getSelectedItemPosition() == 0) {
                 } else if (textFrom.length() == 0) {
-                    createAlertDialog("Base currency can't be empty", "Choose a currency from which you want to convert");
+                    AlertMessage("Choose the currency you would like to convert FROM");
                     //} else if (spinnerTo.getSelectedItemPosition() == 0) {
                 } else if (textTo.length() == 0) {
-                    createAlertDialog("Convert currency can't be empty", "Choose a currency to which you want to convert");
+                    AlertMessage("Choose the currency you would like to convert TO");
                 } else {
                     amount = Double.parseDouble(txt_amount.getText() + "");
                     StringRequest stringRequest = new StringRequest(Request.Method.GET, VOLLEY_URL,
@@ -157,7 +159,8 @@ public class ConvertActivity extends AppCompatActivity implements AdapterView.On
                                         final_result = a * final_toRate * amount;
                                     }
                                     //NumberFormat formatter = new DecimalFormat("#0.00000");
-                                    textResult.setText(amount + " " + textFrom + " = " + final_result + " " + textTo);
+                                    String strResult = amount + " " + textFrom + " = <b>" + final_result + "</b> " + textTo;
+                                    textResult.setText(Html.fromHtml(strResult));
                                 }
                             }, new Response.ErrorListener() {
                         @Override
@@ -173,43 +176,44 @@ public class ConvertActivity extends AppCompatActivity implements AdapterView.On
         });
     }
 
-    private void createAlertDialog(String title, String message) {
-        AlertDialog.Builder dlgAlert = new AlertDialog.Builder(ConvertActivity.this);
-        dlgAlert.setMessage(message);
-        dlgAlert.setTitle(title);
-        dlgAlert.setPositiveButton("OK", null);
-        dlgAlert.setCancelable(true);
-        dlgAlert.show();
+    public void configure_buttonChange(){
+        ImageView buttonChange = (ImageView) findViewById(R.id.buttonChange);
+        buttonChange.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                /*String temp = textFrom;
+                textFrom = textTo;
+                textTo = temp;*/
+                spinnerFrom.setSelection(idxTo);
+                spinnerTo.setSelection(idxFrom);
+            }
+        });
+    }
+
+    public void AlertMessage(String message) {
+        int duration = Toast.LENGTH_SHORT;
+        Context context = getApplicationContext();
+        Toast.makeText(context, message, duration).show();
     }
 
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        if(parent.getId() == R.id.from_spinner)
+        if(parent.getId() == R.id.fromValue)
         {
             textFrom = parent.getItemAtPosition(position).toString();
+            idxFrom = position;
         }
-        else if(parent.getId() == R.id.to_spinner)
+        else if(parent.getId() == R.id.toValue)
         {
             textTo = parent.getItemAtPosition(position).toString();
+            idxTo = position;
         }
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
-    }
-    @Override
-    public void onBackPressed() {
-        if (backPressedTime + 2000 > System.currentTimeMillis()) {
-            backToast.cancel();
-            super.onBackPressed();
-            return;
-        } else {
-            backToast = Toast.makeText(getBaseContext(), "Press back again to exit", Toast.LENGTH_SHORT);
-            backToast.show();
-        }
-        backPressedTime = System.currentTimeMillis();
     }
 
 }

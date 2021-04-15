@@ -18,19 +18,25 @@
 
     <Button
         android:id="@+id/buttonCalculator"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
+        android:layout_width="200dp"
+        android:layout_height="70dp"
         android:layout_marginTop="32dp"
         android:text="Calculator"
+        android:backgroundTint="#1565C0"
+        android:textSize="18sp"
+        android:drawableLeft="@android:drawable/ic_media_play"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Button
         android:id="@+id/buttonConvertor"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
+        android:layout_width="200dp"
+        android:layout_height="70dp"
+        android:drawableLeft="@android:drawable/stat_notify_sync_noanim"
         android:text="Convertor"
+        android:backgroundTint="#1565C0"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonCalculator" />
